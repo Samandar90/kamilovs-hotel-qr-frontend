@@ -131,6 +131,25 @@ const langLabel = $("langLabel");
 const tgLink = $("tgLink");
 const telLink = $("telLink");
 
+// --- Room from URL: ?room=401 (always override saved room)
+(function roomFromUrl(){
+  const u = new URL(window.location.href);
+  const r = (u.searchParams.get("room") || "").trim();
+  if (!r) return;
+
+  // override saved room
+  localStorage.setItem("kh_room", r);
+
+  // update header immediately (if exists)
+  const line = document.getElementById("roomLine");
+  if (line) line.textContent = `Room: ${r}`;
+
+  // optional: clean URL (so it looks neat after scan)
+  // u.searchParams.delete("room");
+  // window.history.replaceState({}, "", u.toString());
+})();
+
+
 tgLink.href = MANAGER_TG;
 telLink.href = MANAGER_TEL;
 
@@ -201,6 +220,17 @@ function closeModal(el) {
   el.classList.remove("is-open");
   el.setAttribute("aria-hidden", "true");
 }
+
+// --- Room from URL: ?room=304 (best for hotel QR)
+(function roomFromUrl(){
+  const u = new URL(window.location.href);
+  const r = (u.searchParams.get("room") || "").trim();
+  if (!r) return;
+  localStorage.setItem("kh_room", r);
+  const line = document.getElementById("roomLine");
+  if (line) line.textContent = `Room: ${r}`;
+})();
+
 
 function ensureRoom() {
   const room = getRoom();
