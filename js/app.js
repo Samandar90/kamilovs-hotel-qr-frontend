@@ -1,6 +1,6 @@
 // === CONFIG (заполни после моих 3 вопросов) ===
 const API_BASE = "https://kamilovs-hotel-qr-backend.onrender.com"; // FastAPI (Render/Railway/VPS)
-const MANAGER_TG = "https://t.me/flottant3";      // менеджер
+const MANAGER_TG = "https://t.me/kamilov_hotel";      // менеджер
 const MANAGER_TEL = "tel:+998950884141";  
        // телефон
 
